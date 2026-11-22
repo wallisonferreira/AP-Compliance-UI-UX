@@ -1,0 +1,212 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="activity-provider-arch" name="Arquitetura AP">
+    <mxGraphModel dx="1226" dy="669" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Atores e contexto -->
+        <mxCell id="aluno" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Aluno" vertex="1">
+          <mxGeometry height="80" width="40" x="40" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="instrutor" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Instrutor" vertex="1">
+          <mxGeometry height="80" width="40" x="40" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="lms" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;dashed=1;" value="LMS&#xa;(contexto, não dependência do AP)" vertex="1">
+          <mxGeometry height="50" width="140" x="20" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="invenira" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" value="Plataforma Inven!RA" vertex="1">
+          <mxGeometry height="640" width="120" x="280" y="200" as="geometry" />
+        </mxCell>
+
+        <!-- Fronteira do AP -->
+        <mxCell id="ap_boundary" parent="1" style="swimlane;html=1;startSize=30;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=14;" value="Activity Provider: Design System UI/UX Compliance Verify" vertex="1">
+          <mxGeometry height="760" width="1180" x="500" y="120" as="geometry" />
+        </mxCell>
+
+        <!-- API Layer -->
+        <mxCell id="api_layer" parent="ap_boundary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=14;verticalAlign=top;spacingTop=10;dashed=1;" value="API Layer (4 interfaces)" vertex="1">
+          <mxGeometry height="660" width="389" x="41" y="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="i_config" parent="ap_boundary" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="20" width="20" x="66" y="98" as="geometry" />
+        </mxCell>
+        <mxCell id="i_launch" parent="ap_boundary" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="20" width="20" x="66" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="i_activity" parent="ap_boundary" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="20" width="20" x="66" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="i_analytics" parent="ap_boundary" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="20" width="20" x="66" y="460" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lbl_iconfig" parent="ap_boundary" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1" value="IConfigAPI&#xa;GET /config_url&#xa;GET /json_params_url" vertex="1">
+          <mxGeometry height="50" width="140" x="86" y="84" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ilaunch" parent="ap_boundary" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1" value="ILaunchAPI&#xa;POST /user_url&#xa;POST /URL" vertex="1">
+          <mxGeometry height="50" width="140" x="86" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_iactivity" parent="ap_boundary" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1" value="IActivityUI&#xa;GET /activity&#xa;POST /submit&#xa;GET /status" vertex="1">
+          <mxGeometry height="60" width="140" x="86" y="295" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_ianalytics" parent="ap_boundary" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1" value="IAnalyticsAPI&#xa;POST /analytics (read)&#xa;POST /assessment (write)" vertex="1">
+          <mxGeometry height="60" width="150" x="86" y="440" as="geometry" />
+        </mxCell>
+
+        <!-- Componentes internos -->
+        <mxCell id="config" parent="ap_boundary" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Config Manager&#xa;(converte string→int, valida URLs)" vertex="1">
+          <mxGeometry height="60" width="160" x="702" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="generator" parent="ap_boundary" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Activity Generator&#xa;(serve design_system_link + links)" vertex="1">
+          <mxGeometry height="60" width="160" x="702" y="219" as="geometry" />
+        </mxCell>
+        <mxCell id="compliance" parent="ap_boundary" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Compliance Engine&#xa;(persiste submissões)" vertex="1">
+          <mxGeometry height="60" width="160" x="702" y="379" as="geometry" />
+        </mxCell>
+        <mxCell id="analytics" parent="ap_boundary" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Analytics Manager&#xa;(lê + grava avaliação)" vertex="1">
+          <mxGeometry height="60" width="160" x="702" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="repo" parent="ap_boundary" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fff2cc;strokeColor=#d6b656;" value="Repository&#xa;Database" vertex="1">
+          <mxGeometry height="100" width="120" x="980" y="390" as="geometry" />
+        </mxCell>
+
+        <!-- Portas: API layer -->
+        <mxCell id="port_config_api_out" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="207" y="103" as="geometry" />
+        </mxCell>
+        <mxCell id="port_launch_api_out" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="207" y="203" as="geometry" />
+        </mxCell>
+        <mxCell id="port_activity_api_out" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="207" y="323" as="geometry" />
+        </mxCell>
+        <mxCell id="port_analytics_api_out" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="207" y="468" as="geometry" />
+        </mxCell>
+
+        <!-- Portas: componentes -->
+        <mxCell id="port_config_in" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="697" y="99" as="geometry" />
+        </mxCell>
+        <mxCell id="port_config_out" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="857" y="99" as="geometry" />
+        </mxCell>
+
+        <mxCell id="port_gen_in" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="697" y="244" as="geometry" />
+        </mxCell>
+        <mxCell id="port_gen_out" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="857" y="244" as="geometry" />
+        </mxCell>
+
+        <mxCell id="port_comp_in" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="697" y="404" as="geometry" />
+        </mxCell>
+        <mxCell id="port_comp_out" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="857" y="404" as="geometry" />
+        </mxCell>
+
+        <mxCell id="port_an_in" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="697" y="582" as="geometry" />
+        </mxCell>
+        <mxCell id="port_an_out_repo" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="857" y="582" as="geometry" />
+        </mxCell>
+
+        <!-- Portas: repositório -->
+        <mxCell id="repo_in_config" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="1000" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="repo_in_task" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="1020" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="repo_in_data" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="1040" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="repo_out_state" value="" style="shape=umlPort;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="ap_boundary">
+          <mxGeometry height="10" width="10" x="1030" y="490" as="geometry" />
+        </mxCell>
+
+        <!-- Ligações API Layer -> componentes -->
+        <mxCell id="edge_cfg" edge="1" parent="ap_boundary" source="port_config_api_out" target="port_config_in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9673a6;strokeWidth=2;" value="ConfigRequest">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_launch" edge="1" parent="ap_boundary" source="port_launch_api_out" target="port_gen_in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9673a6;strokeWidth=2;" value="LaunchRequest">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_activity" edge="1" parent="ap_boundary" source="port_activity_api_out" target="port_comp_in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9673a6;strokeWidth=2;" value="GET /activity | POST /submit | GET /status">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_analytics" edge="1" parent="ap_boundary" source="port_analytics_api_out" target="port_an_in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9673a6;strokeWidth=2;" value="POST /analytics (read) | POST /assessment (write)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Retornos -->
+        <mxCell id="edge_cfg_ret" edge="1" parent="ap_boundary" source="port_config_in" target="port_config_api_out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#9673a6;" value="ConfigResponse / 400">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_launch_ret" edge="1" parent="ap_boundary" source="port_gen_out" target="port_launch_api_out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#9673a6;" value="URL redirecionamento">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_activity_ret" edge="1" parent="ap_boundary" source="port_comp_out" target="port_activity_api_out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#9673a6;" value="design_system_link + links + estado">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_analytics_ret" edge="1" parent="ap_boundary" source="port_an_in" target="port_analytics_api_out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#9673a6;" value="students[] + activitySummary">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Ligações internas (config -> gerador -> compliance -> analytics) -->
+        <mxCell id="edge_cfg_gen" edge="1" parent="ap_boundary" source="port_config_out" target="port_gen_in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" value="config validada">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_gen_comp" edge="1" parent="ap_boundary" source="port_gen_out" target="port_comp_in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" value="instância publicada">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_comp_an" edge="1" parent="ap_boundary" source="port_comp_out" target="port_an_in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" value="StudentStats">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Ligações ao repositório (sem cruzamentos) -->
+        <mxCell id="edge_cfg_repo" edge="1" parent="ap_boundary" source="port_config_out" target="repo_in_config" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" value="StoreConfig">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_gen_repo" edge="1" parent="ap_boundary" source="port_gen_out" target="repo_in_task" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" value="StoreInstance">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_comp_repo" edge="1" parent="ap_boundary" source="port_comp_out" target="repo_in_data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" value="StoreSubmission/State">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_an_repo" edge="1" parent="ap_boundary" source="port_an_out_repo" target="repo_in_data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" value="StoreAssessment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_repo_an" edge="1" parent="ap_boundary" source="repo_out_state" target="port_an_in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;" value="RetrieveState">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Contexto: Inven!RA e atores -->
+        <mxCell id="edge_lms_inv" edge="1" parent="1" source="lms" target="invenira" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.1;" value="contexto">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_inv_config" edge="1" parent="1" source="invenira" target="i_config" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0000FF;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_inv_launch" edge="1" parent="1" source="invenira" target="i_launch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0000FF;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_aluno_activity" edge="1" parent="1" source="aluno" target="i_activity" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0000FF;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_instr_inv" edge="1" parent="1" source="instrutor" target="i_analytics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0000FF;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Nota de contexto -->
+        <mxCell id="note_external" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;" value="Página alvo é externa: AP guarda o URL, não a hospeda, não injeta violações.&#xa;Avaliação de conformidade é humana (professor via POST /assessment).&#xa;AP emite analytics; não constrói dashboards." vertex="1">
+          <mxGeometry height="80" width="330" x="1320" y="160" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
